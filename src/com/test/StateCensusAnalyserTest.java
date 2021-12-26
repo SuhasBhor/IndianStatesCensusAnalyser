@@ -19,7 +19,7 @@ public class StateCensusAnalyserTest {
 	
 	//Given Invalid File Name And Throw Exception
 	@Test
-	public void testForCheck_InvalidFile() throws Exception {
+	public void testForCheck_InvalidFile() {
 		try {
 			stateCensusAnalyser.csvFileDataLoad("F:\\BridgelabzClass\\IndianStateCensusAnalyser\\src\\com\\resource\\IndiaStateCensusDa.csv");
 		} catch (Exception e) {
@@ -30,12 +30,24 @@ public class StateCensusAnalyserTest {
 	
 	//Given Wrong Data Type In File And Throw Exception
 	@Test
-	public void testForCheck_WrongData() throws Exception {
+	public void testForCheck_WrongData() {
 		try {
 			stateCensusAnalyser.csvFileDataLoad("F:\\BridgelabzClass\\IndianStateCensusAnalyser\\src\\com\\resource\\IndiaStateCensusWrongData.csv");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	//Given CSV File Has Wrong Delimiter So Throws Custom Exception
+	@Test
+	public void testForCheck_WrongDelimiter() {
+		try {
+			stateCensusAnalyser.csvFileDataLoad("F:\\BridgelabzClass\\IndianStateCensusAnalyser\\src\\com\\resource\\IndiaStateCensusWrongDelimiter.csv");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

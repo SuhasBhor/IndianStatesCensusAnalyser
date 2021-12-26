@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.entity.CSVStateCensus;
 import com.exception.InvalidDataType;
+import com.exception.InvalidDelimiter;
 import com.exception.InvalideFileName;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -21,12 +22,13 @@ public class StateCensusAnalyser {
 			// CsvReader For Reading data from CSV File
 			CSVReader csvReader = new CSVReader(new FileReader(filePath));
 			String[] data;
-			int count = 0;
 			data = csvReader.readNext();
 			while ((data = csvReader.readNext()) != null) {
+				if(data.length != 4) {
+					throw new InvalidDelimiter("Delimiter Is Wrong In CSVFile");
+				}
 				csvStateCensus.add(new CSVStateCensus(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]),
 						Double.parseDouble(data[3])));
-				count++;
 			}
 
 			for (CSVStateCensus info : csvStateCensus) {
