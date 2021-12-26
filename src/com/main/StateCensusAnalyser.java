@@ -7,16 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.CSVStateCensus;
+import com.exception.InvalideFileName;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 public class StateCensusAnalyser {
+	//Creating List For Storing The data
 	List<CSVStateCensus> csvStateCensus = new ArrayList<>();
 
-	public void csvFileDataLoad() {
+	public void csvFileDataLoad(String filePath) throws Exception {
 		try {
-			CSVReader csvReader = new CSVReader(new FileReader(
-					"F:\\BridgelabzClass\\IndianStateCensusAnalyser\\src\\com\\resource\\IndiaStateCensusData.csv"));
+			//CsvReader For Reading data from CSV File
+			CSVReader csvReader = new CSVReader(new FileReader(filePath));
 			String[] data;
 			data = csvReader.readNext();
 			while ((data = csvReader.readNext()) != null) {
@@ -29,7 +31,7 @@ public class StateCensusAnalyser {
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new InvalideFileName("Please Enter Valid Name");
 		} catch (CsvValidationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
