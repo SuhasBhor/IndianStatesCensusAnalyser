@@ -18,9 +18,10 @@ public class StateCensusAnalyserTest {
 		assertEquals(true, stateCensusAnalyser.countEntries());
 	}
 	
+	
 	//Given Invalid File Name And Throw Exception
 	@Test
-	public void testForCheck_InvalidFile() {
+	public void testForCheck_InvalidFile() throws Exception {
 		try {
 			stateCensusAnalyser.csvFileDataLoad("F:\\BridgelabzClass\\IndianStateCensusAnalyser\\src\\com\\"
 					+ "resource\\IndiaStateCensusDa.csv");
@@ -32,7 +33,7 @@ public class StateCensusAnalyserTest {
 	
 	//Given Wrong Data Type In File And Throw Exception
 	@Test
-	public void testForCheck_WrongData() {
+	public void testForCheck_WrongData() throws Exception {
 		try {
 			stateCensusAnalyser.csvFileDataLoad("F:\\BridgelabzClass\\IndianStateCensusAnalyser\\src\\com\\"
 					+ "resource\\IndiaStateCensusWrongData.csv");
